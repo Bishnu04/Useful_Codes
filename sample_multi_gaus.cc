@@ -26,7 +26,7 @@ void sample_multi_gaus(){
   h1->FillRandom("f3",5000);
 
   ///now lets define the fitting function
- TF1* fitfunc = new TF1("fitfunc",three_gaus,-10,15,9); // here 6 is no of parameter, and -10 to 20 is th fitting range
+ TF1* fitfunc = new TF1("fitfunc",three_gaus,-10,15,9); // here 9 is no of parameter, and -10 to 20 is th fitting range
  fitfunc->SetParameter(0,1);// amplitude
  fitfunc->SetParameter(1,-3); // mean 			
  fitfunc->SetParameter(2,0.5); // sigma
@@ -44,13 +44,14 @@ void sample_multi_gaus(){
 
  // fitfunc->SetParLimits(4,
  //			4.0,18.0);
-
+  fitfunc->SetNpx(1000);   
+  
   TCanvas *c = new TCanvas("c","c",600,600);
   h1->Draw(); //hist draw
   h1->Fit("fitfunc","Nq","",-10.0,12.0); // Fitting but not be shown
   fitfunc->Draw("same");
 
-  fitfunc->SetNpx(1000); 
+ 
 
 
 }
